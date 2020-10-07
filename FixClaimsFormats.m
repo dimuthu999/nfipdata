@@ -63,10 +63,9 @@ temp = NaN(height(NFIPC),1);
 temp(~cellfun(@isempty,NFIPC.lowestAdjacentGrade)) = cell2mat(NFIPC.lowestAdjacentGrade);
 NFIPC.lowestAdjacentGrade = temp;
 
-% FIX VARIABLE NAME TO FLOOR
 temp = NaN(height(NFIPC),1);
-temp(~cellfun(@isempty,NFIPC.lowestFloodElevation)) = cell2mat(NFIPC.lowestFloodElevation);
-NFIPC.lowestFloodElevation = temp;
+temp(~cellfun(@isempty,NFIPC.lowestFloorElevation)) = cell2mat(NFIPC.lowestFloorElevation);
+NFIPC.lowestFloorElevation = temp;
 
 if iscell(NFIPC.numberOfFloorsInTheInsuredBuilding)
     temp = NaN(height(NFIPC),1);
@@ -147,7 +146,7 @@ x = NFIPC.elevationCertificateIndicator;
 x(cellfun(@isempty,x)) = {NaN};
 NFIPC.elevationCertificateIndicator = categorical(cellstr(num2str(cell2mat(x))),valueset,catnames);
 
-% x = NFIPC.floodZone; % way too many codes to categorize
+% x = NFIPC.floodZone;
 % x(cellfun(@isempty,x)) = {'NaN'};
 % valueset = {'NaN',''};
 % catnames = {'Missing',''};
@@ -189,7 +188,7 @@ NFIPC.originalConstructionDate = datetime(NFIPC.originalConstructionDate,'InputF
 NFIPC.originalNBDate(cellfun(@isempty,NFIPC.originalNBDate)) = {'NaT'};
 NFIPC.originalNBDate = datetime(NFIPC.originalNBDate,'InputFormat',datefmt);
 
-NFIPC.yearofLoss = datetime(NFIPC.yearofLoss,'InputFormat',datefmt);
+%NFIPC.yearOfLoss = datetime(NFIPC.yearOfLoss,'InputFormat',datefmt);
 
 end
 
